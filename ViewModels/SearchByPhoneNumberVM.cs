@@ -1,6 +1,7 @@
 ﻿using ForDBA.Data;
 using ForDBA.Data.Models;
 using ForDBA.Data.Repository;
+using ForDBA.Services;
 using ForDBA.Services.Commands;
 using System;
 using System.Collections.Generic;
@@ -18,6 +19,9 @@ namespace ForDBA.ViewModels
         {
             IRepository userRepository = new Repository();
             Abonents = userRepository.GetAbonents();
+            MainDataGridMapper mainDataGridMapper = new MainDataGridMapper();
+
+            MainDataGridItems = mainDataGridMapper.GetMappingResult(Abonents);
 
         }
 
@@ -28,6 +32,17 @@ namespace ForDBA.ViewModels
             set { _abonents = value; }
         }
 
+        public List<MainDataGrid> _mainDataGridItems;
+        public List<MainDataGrid> MainDataGridItems
+        {
+            get { return _mainDataGridItems; }
+            set
+            {
+
+                _mainDataGridItems = value;
+                OnPropertyChanged("MainDataGridItems");
+            }
+        }
 
         private string _phoneNumber;
         public string NumberForSearch
@@ -39,7 +54,7 @@ namespace ForDBA.ViewModels
                 //ViewModelsContainer.mainWindowVM.Abonents
 
                 
-                var filteredAbonents = Abonents.Where(abonent => abonent.PhoneNumber.MobilePhoneNumber.Contains(_phoneNumber) || abonent.PhoneNumber.HomePhoneNumber.Contains(_phoneNumber) || abonent.PhoneNumber.WorkPhoneNumber.Contains(_phoneNumber)).ToList();
+                var filteredAbonents = MainDataGridItems.Where(abonent => abonent.MobilePhoneNumber.Contains(_phoneNumber) || abonent.HomePhoneNumber.Contains(_phoneNumber) || abonent.WorkPhoneNumber.Contains(_phoneNumber)).ToList();
                 if (filteredAbonents.Count == 0)
                 {
                     Visibility = "Visible";
@@ -48,7 +63,7 @@ namespace ForDBA.ViewModels
                 {
                     Visibility = "Collapsed";
                 }
-                ViewModelsContainer.mainWindowVM.Abonents = filteredAbonents;
+                ViewModelsContainer.mainWindowVM.MainDataGridItems = MainDataGridItems;
             }
         }
 

@@ -8,10 +8,13 @@ namespace ForDBA.Data.Models
 {
     class Abonent : BaseModel
     {
-        public string FIO { get; set; }
-        public PhoneNumber PhoneNumber { get; set; }
+
+        public string Name { get; set; }
+        public string LastName { get; set; }
+        public string SurName { get; set; }
+        public IEnumerable<PhoneNumber> PhoneNumbers { get; set; }
         public Address Address { get; set; }
-        public Streets Street { get; set; }
+
 
     }
 }

@@ -9,5 +9,7 @@ namespace ForDBA.Data.Models
     class Address : BaseModel
     {
         public string HomeNumber { get; set; }
+
+        public Streets Street { get; set; }
     }
 }

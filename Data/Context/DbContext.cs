@@ -11,7 +11,7 @@ namespace ForDBA.Data.Context
     class DbContext
     {
         private static IRepository _userRepository;
-        public static string connectionString = "Server=31.31.196.77;Database=u2501067_DBA_test_DB; User Id=u2501067_root;Password=&^RTG7^R7678)T*J7; SslMode=none;";
+        public static string connectionString = "Server=31.31.196.77;Database=u2501067_DBTestTwo; User Id=u2501067_JustUse;Password=jZRDEr87P8Ya#$x; SslMode=none;";
         public static void ConfigureServices()
         {
             //_userRepository = new UserRepository(connectionString);

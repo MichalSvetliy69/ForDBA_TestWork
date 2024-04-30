@@ -26,7 +26,7 @@ namespace ForDBA.ViewModels
                 int n = 0;
                 foreach (var abonent in Abonents)
                 {
-                    if (abonent.Street.StreetName == street.StreetName)
+                    if (abonent.Address.Street.StreetName == street.StreetName)
                     {
                         n++;
                     } 

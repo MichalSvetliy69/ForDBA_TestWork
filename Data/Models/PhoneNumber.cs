@@ -8,8 +8,7 @@ namespace ForDBA.Data.Models
 {
     class PhoneNumber : BaseModel
     {
-        public string HomePhoneNumber { get; set; }
-        public string WorkPhoneNumber { get; set; }
-        public string MobilePhoneNumber { get; set; }
+        public string Number { get; set; }
+        public string Type { get; set; }
     }
 }

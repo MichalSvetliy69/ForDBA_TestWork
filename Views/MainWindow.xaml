@@ -31,14 +31,14 @@
         </Menu>
 
 
-        <DataGrid x:Name="DGrid" IsReadOnly="True" ItemsSource="{Binding Abonents, UpdateSourceTrigger=PropertyChanged}"  Grid.Row="1" Grid.Column="1" Grid.RowSpan="2" AutoGenerateColumns="False" SelectionChanged="DGrid_SelectionChanged" Margin="0,24,28,0">
+        <DataGrid x:Name="DGrid" IsReadOnly="True" ItemsSource="{Binding MainDataGridItems, UpdateSourceTrigger=PropertyChanged}"  Grid.Row="1" Grid.Column="1" Grid.RowSpan="2" AutoGenerateColumns="False" SelectionChanged="DGrid_SelectionChanged" Margin="0,24,28,0">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="FIO" Binding="{Binding FIO}" Width="150"/>
-                <DataGridTextColumn Header="Street" Binding="{Binding Street.StreetName}" Width="150"/>
-                <DataGridTextColumn Header="Address" Binding="{Binding Address.HomeNumber}" Width="150"/>
-                <DataGridTextColumn Header="PhoneNumber" Binding="{Binding PhoneNumber.HomePhoneNumber}" Width="150"/>
-                <DataGridTextColumn Header="PhoneNumber" Binding="{Binding PhoneNumber.WorkPhoneNumber}" Width="150"/>
-                <DataGridTextColumn Header="PhoneNumber" Binding="{Binding PhoneNumber.MobilePhoneNumber}" Width="150"/>
+                <DataGridTextColumn Header="Street" Binding="{Binding StreetName}" Width="150"/>
+                <DataGridTextColumn Header="Address" Binding="{Binding HomeNumber}" Width="150"/>
+                <DataGridTextColumn Header="PhoneNumber" Binding="{Binding HomePhoneNumber}" Width="150"/>
+                <DataGridTextColumn Header="PhoneNumber" Binding="{Binding WorkPhoneNumber}" Width="150"/>
+                <DataGridTextColumn Header="PhoneNumber" Binding="{Binding MobilePhoneNumber}" Width="150"/>
 
             </DataGrid.Columns>
         </DataGrid>

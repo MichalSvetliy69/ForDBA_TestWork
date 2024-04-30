@@ -39,25 +39,25 @@ namespace ForDBA.Data.Repository
             SELECT abonent.*, address.*, phoneNumber.*, street.*
             FROM Abonent abonent
             LEFT JOIN Address address ON address.ID = abonent.AddressID
-            LEFT JOIN PhoneNumber phoneNumber ON phoneNumber.ID = abonent.PhoneNumberID
-            LEFT JOIN Streets street ON street.ID = abonent.StreetID
+            LEFT JOIN PhoneNumber phoneNumber ON phoneNumber.AbonentID = abonent.ID
+            LEFT JOIN Streets street ON street.ID = address.StreetID
             WHERE 1 = 1
         ";
 
-                var addresses = db.Query<Abonent, Address, PhoneNumber, Streets, Abonent>(
+                var result = db.Query<Abonent, Address, IEnumerable<PhoneNumber>, Streets, Abonent>(
                     sql,
                     (abonent, address, phoneNumber, street) =>
                     {
                         // Обработка результатов запроса
+                        address.Street = street;
                         abonent.Address = address;
-                        abonent.PhoneNumber = phoneNumber;
-                        abonent.Street = street;
+                        abonent.PhoneNumbers = phoneNumber;
                         return abonent;
                     },
                     splitOn: "ID" // Указываем, по какому столбцу производить разделение объектов
                 );
 
-                return addresses.ToList();
+                return result.ToList();
             }
         }
 

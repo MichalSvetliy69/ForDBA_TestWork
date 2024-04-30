@@ -1,4 +1,5 @@
 ﻿using ForDBA.Data.Models;
+using ForDBA.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -10,7 +11,7 @@ namespace ForDBA.Services
 {
     class CsvExporter
     {
-        public static void ExportToCsv(List<Abonent> items, string filePath)
+        public static void ExportToCsv(List<MainDataGrid> items, string filePath)
         {
             // Открываем файл для записи
             using (StreamWriter sw = new StreamWriter(filePath, false, Encoding.UTF8))
@@ -22,7 +23,7 @@ namespace ForDBA.Services
                 foreach (var item in items)
                 {
                     // Форматируем строку для записи в CSV
-                    string line = $"{EscapeCsvField(item.FIO)},{item.Address.HomeNumber},{item.PhoneNumber.HomePhoneNumber},{item.PhoneNumber.WorkPhoneNumber},{item.PhoneNumber.MobilePhoneNumber},{item.Street.StreetName}";
+                    string line = $"{EscapeCsvField(item.FIO)},{item.HomeNumber},{item.HomePhoneNumber},{item.WorkPhoneNumber},{item.MobilePhoneNumber},{item.StreetName}";
 
                     // Записываем строку в файл
                     sw.WriteLine(line);

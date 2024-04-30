@@ -19,13 +19,35 @@ using ForDBA.Services;
 
 namespace ForDBA.ViewModels
 {
+
+    class MainDataGrid
+    {
+        public string? FIO { get; set; }
+        public string? HomeNumber { get; set; }
+        public string? StreetName { get; set; }
+        public string? HomePhoneNumber { get; set; }
+        public string? WorkPhoneNumber { get; set; }
+        public string? MobilePhoneNumber { get; set; }
+    }
+
+
+
     class MainWindowVM : INotifyPropertyChanged
     {
         List<Abonent> _abonents;
+        List<MainDataGrid> _mainDataGridItems;
         public MainWindowVM ()
         {
             IRepository userRepository = new Repository();
             Abonents = userRepository.GetAbonents();
+            MainDataGridMapper mainDataGridMapper = new MainDataGridMapper();
+
+            MainDataGridItems = mainDataGridMapper.GetMappingResult(Abonents);
+            if (true)
+            {
+
+            }    
+
         }
 
 
@@ -37,6 +59,17 @@ namespace ForDBA.ViewModels
 
                 _abonents = value;
                 OnPropertyChanged("Abonents");
+            }
+        }
+
+        public List<MainDataGrid> MainDataGridItems
+        {
+            get { return _mainDataGridItems; }
+            set
+            {
+
+                _mainDataGridItems = value;
+                OnPropertyChanged("MainDataGridItems");
             }
         }
 
@@ -98,7 +131,7 @@ namespace ForDBA.ViewModels
 
  
 
-                                   CsvExporter.ExportToCsv(Abonents, filePath);
+                                   CsvExporter.ExportToCsv(MainDataGridItems, filePath);
 
 
 
