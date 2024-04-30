@@ -31,7 +31,7 @@
         </Menu>
 
 
-        <DataGrid x:Name="DGrid" ItemsSource="{Binding Abonents, UpdateSourceTrigger=PropertyChanged}"  Grid.Row="1" Grid.Column="1" Grid.RowSpan="2" AutoGenerateColumns="False" SelectionChanged="DGrid_SelectionChanged" Margin="0,24,28,0">
+        <DataGrid x:Name="DGrid" IsReadOnly="True" ItemsSource="{Binding Abonents, UpdateSourceTrigger=PropertyChanged}"  Grid.Row="1" Grid.Column="1" Grid.RowSpan="2" AutoGenerateColumns="False" SelectionChanged="DGrid_SelectionChanged" Margin="0,24,28,0">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="FIO" Binding="{Binding FIO}" Width="150"/>
                 <DataGridTextColumn Header="Street" Binding="{Binding Street.StreetName}" Width="150"/>

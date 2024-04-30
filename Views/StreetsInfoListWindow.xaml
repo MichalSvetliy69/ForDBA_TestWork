@@ -15,7 +15,7 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <DataGrid x:Name="DGrid" ItemsSource="{Binding DataGrid}" AutoGenerateColumns="False">
+        <DataGrid x:Name="DGrid" IsReadOnly="True" ItemsSource="{Binding DataGrid}" AutoGenerateColumns="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="StreetName" Binding="{Binding StreetName}" Width="350"/>
                 <DataGridTextColumn Header="AbonentCount" Binding="{Binding AbonentsCount}" Width="150"/>

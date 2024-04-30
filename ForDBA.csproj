@@ -8,11 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Images\Capture1.PNG" />
-    <None Remove="Views\Capture1.PNG" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Folder Include="ValidationRules\" />
   </ItemGroup>
 
@@ -20,11 +15,6 @@
     <PackageReference Include="Dapper" Version="2.1.35" />
     <PackageReference Include="Microsoft.Data.SqlClient" Version="5.2.0" />
     <PackageReference Include="MySql.Data" Version="8.3.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Resource Include="Images\Capture1.PNG" />
-    <Resource Include="Views\Capture1.PNG" />
   </ItemGroup>
 
 </Project>
