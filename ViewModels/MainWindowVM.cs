@@ -48,15 +48,10 @@ namespace ForDBA.ViewModels
                 return _openSearchByPhoneNumberWindow ??
                        (_openSearchByPhoneNumberWindow = new RelayCommand(obj =>
                        {
-                           try
-                           {
+                           
                                SearchByPhoneNumber window = new SearchByPhoneNumber();
                                window.Show();
-                           }
-                           catch (Exception ex)
-                           {
-                               
-                           }
+                          
                        }));
             }
         }
@@ -69,15 +64,10 @@ namespace ForDBA.ViewModels
                 return _openStreetsInfoListWindow ??
                        (_openStreetsInfoListWindow = new RelayCommand(obj =>
                        {
-                           try
-                           {
+                           
                                StreetsInfoListWindow window = new StreetsInfoListWindow();
                                window.Show();
-                           }
-                           catch (Exception ex)
-                           {
-
-                           }
+                          
                        }));
             }
         }
@@ -91,8 +81,7 @@ namespace ForDBA.ViewModels
                 return _openFileDialog ??
                        (_openFileDialog = new RelayCommand(obj =>
                        {
-                           try
-                           {
+                           
                                System.Windows.Forms.SaveFileDialog saveFileDialog = new System.Windows.Forms.SaveFileDialog();
                                saveFileDialog.Filter = "CSV files (*.csv)|*.csv|All files (*.*)|*.*"; // Фильтр для отображаемых типов файлов
                                saveFileDialog.FilterIndex = 1; // Номер фильтра по умолчанию
@@ -115,11 +104,7 @@ namespace ForDBA.ViewModels
 
                                    MessageBox.Show("Файл успешно сохранен.");
                                }
-                           }
-                           catch (Exception ex)
-                           {
-
-                           }
+                           
                        }));
             }
         }

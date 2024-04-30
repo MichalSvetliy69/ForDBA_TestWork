@@ -8,7 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="ValidationRules\" />
+    <Compile Remove="ValidationRules\**" />
+    <EmbeddedResource Remove="ValidationRules\**" />
+    <None Remove="ValidationRules\**" />
+    <Page Remove="ValidationRules\**" />
   </ItemGroup>
 
   <ItemGroup>

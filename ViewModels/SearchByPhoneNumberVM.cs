@@ -73,14 +73,9 @@ namespace ForDBA.ViewModels
                 return _closeCommand ??
                        (_closeCommand = new RelayCommand(obj =>
                        {
-                           try
-                           {
+                           
                                ViewModelsContainer.mainWindowVM.Abonents = Abonents;
-                           }
-                           catch (Exception ex)
-                           {
-
-                           }
+                           
                        }));
             }
         }
