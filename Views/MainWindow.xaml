@@ -1,0 +1,64 @@
+﻿<Window x:Class="ForDBA.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ForDBA"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="969">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="8*"/>
+            <ColumnDefinition Width="187*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="24*"/>
+            <RowDefinition Height="24*"/>
+            <RowDefinition Height="291*"/>
+            <RowDefinition Height="95*"/>
+        </Grid.RowDefinitions>
+        <Menu Height="25" VerticalAlignment="Center" Grid.ColumnSpan ="2" Margin="0,0,365,0">
+            <MenuItem Header="File">
+                <MenuItem Header="New Project" />
+                <MenuItem Header="Open Project" >
+                    <MenuItem Header="WinForms"/>
+                    <MenuItem Header="WPF" />
+                </MenuItem>
+                <Separator />
+                <MenuItem Header="Exit" />
+            </MenuItem>
+            <MenuItem Header="View" />
+        </Menu>
+
+
+        <DataGrid x:Name="DGrid" ItemsSource="{Binding Abonents, UpdateSourceTrigger=PropertyChanged}"  Grid.Row="1" Grid.Column="1" Grid.RowSpan="2" AutoGenerateColumns="False" SelectionChanged="DGrid_SelectionChanged" Margin="0,24,28,0">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="FIO" Binding="{Binding FIO}" Width="150"/>
+                <DataGridTextColumn Header="Street" Binding="{Binding Street.StreetName}" Width="150"/>
+                <DataGridTextColumn Header="Address" Binding="{Binding Address.HomeNumber}" Width="150"/>
+                <DataGridTextColumn Header="PhoneNumber" Binding="{Binding PhoneNumber.HomePhoneNumber}" Width="150"/>
+                <DataGridTextColumn Header="PhoneNumber" Binding="{Binding PhoneNumber.WorkPhoneNumber}" Width="150"/>
+                <DataGridTextColumn Header="PhoneNumber" Binding="{Binding PhoneNumber.MobilePhoneNumber}" Width="150"/>
+
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Button x:Name ="AddComductorButton" Command="{Binding OpenSearchByPhoneNumberWindowCommand}" Grid.Row="3" Grid.Column="1" Content="Поиск" HorizontalAlignment="Left"  VerticalAlignment="Center" Height="50" Width="116"/>
+        <Button Grid.Row="3" Grid.Column="1" Content="Улицы" Margin="152,0,0,0" Command="{Binding OpenStreetsInfoListWindowCommand}"   HorizontalAlignment="Left"  VerticalAlignment="Center" Height="50" Width="116">
+            
+        </Button>
+
+        <Button Grid.Row="3" Grid.Column="1" Margin="304,0,0,0"  HorizontalAlignment="Left"  VerticalAlignment="Center" Height="50" Width="116" Command="{Binding OpenFileDialogCommand}">
+            <TextBlock Text="Выгрузить CSV" TextWrapping="Wrap" TextAlignment="Center"/>
+        </Button>
+
+
+        <TextBlock Name="MiniList" Grid.Row="3" Grid.ColumnSpan="2" Margin="28,73,1224,5"/>
+        
+
+
+
+
+
+    </Grid>
+</Window>
