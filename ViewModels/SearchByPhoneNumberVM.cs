@@ -18,10 +18,11 @@ namespace ForDBA.ViewModels
         public SearchByPhoneNumberVM()
         {
             IRepository userRepository = new Repository();
-            Abonents = userRepository.GetAbonents();
+            //Abonents = userRepository.GetAbonents();
             MainDataGridMapper mainDataGridMapper = new MainDataGridMapper();
 
-            MainDataGridItems = mainDataGridMapper.GetMappingResult(Abonents);
+            MainDataGridItems = userRepository.GetMainDataGrids();
+            //MainDataGridItems = mainDataGridMapper.GetMappingResult(Abonents);
 
         }
 

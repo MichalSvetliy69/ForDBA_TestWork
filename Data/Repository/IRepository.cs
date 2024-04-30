@@ -1,4 +1,5 @@
 ﻿using ForDBA.Data.Models;
+using ForDBA.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,7 @@ namespace ForDBA.Data.Repository
         //void Update(Abonent abonent);
         List<Abonent> GetAbonents();
         List<Address> GetAddresses();
+        List<MainDataGrid> GetMainDataGrids();
         List<PhoneNumber> GetPhoneNumbers();
         List<Streets> GetStreets();
 

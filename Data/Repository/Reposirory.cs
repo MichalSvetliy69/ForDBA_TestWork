@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using Microsoft.Data.SqlClient;
 using ForDBA.Data.Context;
 using MySql.Data.MySqlClient;
+using ForDBA.ViewModels;
 
 namespace ForDBA.Data.Repository 
 {
@@ -36,22 +37,20 @@ namespace ForDBA.Data.Repository
             using (IDbConnection db = new MySqlConnection(connectionString))
             {
                 string sql = @"
-            SELECT abonent.*, address.*, phoneNumber.*, street.*
+            SELECT abonent.*, address.*, street.*
             FROM Abonent abonent
             LEFT JOIN Address address ON address.ID = abonent.AddressID
-            LEFT JOIN PhoneNumber phoneNumber ON phoneNumber.AbonentID = abonent.ID
             LEFT JOIN Streets street ON street.ID = address.StreetID
             WHERE 1 = 1
         ";
 
-                var result = db.Query<Abonent, Address, IEnumerable<PhoneNumber>, Streets, Abonent>(
+                var result = db.Query<Abonent, Address, Streets, Abonent>(
                     sql,
-                    (abonent, address, phoneNumber, street) =>
+                    (abonent, address, street) =>
                     {
                         // Обработка результатов запроса
                         address.Street = street;
                         abonent.Address = address;
-                        abonent.PhoneNumbers = phoneNumber;
                         return abonent;
                     },
                     splitOn: "ID" // Указываем, по какому столбцу производить разделение объектов
@@ -61,7 +60,7 @@ namespace ForDBA.Data.Repository
             }
         }
 
- 
+
 
         public List<PhoneNumber> GetPhoneNumbers()
         {
@@ -76,6 +75,49 @@ namespace ForDBA.Data.Repository
             using (IDbConnection db = new MySqlConnection(connectionString))
             {
                 return db.Query<Streets>("SELECT * FROM Streets").ToList();
+            }
+        }
+
+        public List<MainDataGrid> GetMainDataGrids()
+        {
+            using (IDbConnection db = new MySqlConnection(connectionString))
+            {
+                string sql = @"
+            SELECT grouppedNumbers.*, abonent.*,  address.*,  street.*
+            FROM
+            (
+                SELECT
+                max(case when `Type` = 'HomePhoneNumber' then `Number`  end) HomePhoneNumber,
+                max(case when `Type` = 'WorkPhoneNumber' then `Number` end) WorkPhoneNumber,
+                max(case when `Type` = 'MobilePhoneNumber' then `Number` end) MobilePhoneNumber,
+                `AbonentId`
+            FROM u2501067_DBTestTwo.PhoneNumber
+            GROUP BY AbonentID  
+            ) grouppedNumbers 
+            LEFT JOIN Abonent abonent ON abonent.Id = grouppedNumbers.AbonentID
+            LEFT JOIN Address address ON address.ID = abonent.AddressID
+            LEFT JOIN Streets street ON street.ID = address.StreetID    
+
+        ";
+
+                var result = db.Query< MainDataGrid, Abonent, Address, Streets, MainDataGrid > (
+                    sql,
+                    (grouppedNumbers, abonent, address, street) =>
+                    {
+                        // Обработка результатов запроса
+                        //address.Street = street;
+                        //abonent.Address = address;
+                        grouppedNumbers.FIO = $"{abonent.Name} {abonent.LastName} {abonent.SurName}";
+                        grouppedNumbers.HomeNumber = address.HomeNumber;
+                        grouppedNumbers.StreetName = street.StreetName;
+
+
+                        return grouppedNumbers;
+                    },
+                    splitOn: "ID" // Указываем, по какому столбцу производить разделение объектов
+                );
+
+                return result.ToList();
             }
         }
     }

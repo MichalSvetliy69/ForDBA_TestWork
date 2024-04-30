@@ -39,14 +39,12 @@ namespace ForDBA.ViewModels
         public MainWindowVM ()
         {
             IRepository userRepository = new Repository();
-            Abonents = userRepository.GetAbonents();
+            //Abonents = userRepository.GetAbonents();
             MainDataGridMapper mainDataGridMapper = new MainDataGridMapper();
 
-            MainDataGridItems = mainDataGridMapper.GetMappingResult(Abonents);
-            if (true)
-            {
-
-            }    
+            MainDataGridItems = userRepository.GetMainDataGrids();
+            //MainDataGridItems = mainDataGridMapper.GetMappingResult(Abonents);
+  
 
         }
 
