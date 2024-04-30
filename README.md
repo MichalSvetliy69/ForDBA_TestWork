@@ -42,11 +42,11 @@ CREATE TABLE IF NOT EXISTS Address (
 ALTER TABLE Address
 ADD CONSTRAINT FK_Address_Street FOREIGN KEY (StreetId) REFERENCES Streets(Id);
 ```
-![Abonents]([images/example.png](https://github.com/MichalSvetliy69/ForDBA_TestWork/blob/master/Images/Abonents.PNG))
+![Abonents](https://github.com/MichalSvetliy69/ForDBA_TestWork/blob/master/Images/Abonents.PNG)
 
-![Addresses]([[images/example.png](https://github.com/MichalSvetliy69/ForDBA_TestWork/blob/master/Images/Abonents.PNG](https://github.com/MichalSvetliy69/ForDBA_TestWork/blob/master/Images/Addresses.PNG)))
+![Addresses](https://github.com/MichalSvetliy69/ForDBA_TestWork/blob/master/Images/Addresses.PNG)
 
-![PhoneNumbers]([[images/example.png](https://github.com/MichalSvetliy69/ForDBA_TestWork/blob/master/Images/Abonents.PNG](https://github.com/MichalSvetliy69/ForDBA_TestWork/blob/master/Images/PhoneNumbers.PNG)))
+![PhoneNumbers](https://github.com/MichalSvetliy69/ForDBA_TestWork/blob/master/Images/PhoneNumbers.PNG)
 
 ![Streets]([[images/example.png](https://github.com/MichalSvetliy69/ForDBA_TestWork/blob/master/Images/Abonents.PNG](https://github.com/MichalSvetliy69/ForDBA_TestWork/blob/master/Images/Streets.PNG)))
 
