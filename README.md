@@ -37,9 +37,17 @@ CREATE TABLE IF NOT EXISTS Address (
     HomeNumber VARCHAR(255),
     StreetId INT
 );
-```
+
 
 ALTER TABLE Address
 ADD CONSTRAINT FK_Address_Street FOREIGN KEY (StreetId) REFERENCES Streets(Id);
+```
+![Abonents]([images/example.png](https://github.com/MichalSvetliy69/ForDBA_TestWork/blob/master/Images/Abonents.PNG))
+
+![Addresses]([[images/example.png](https://github.com/MichalSvetliy69/ForDBA_TestWork/blob/master/Images/Abonents.PNG](https://github.com/MichalSvetliy69/ForDBA_TestWork/blob/master/Images/Addresses.PNG)))
+
+![PhoneNumbers]([[images/example.png](https://github.com/MichalSvetliy69/ForDBA_TestWork/blob/master/Images/Abonents.PNG](https://github.com/MichalSvetliy69/ForDBA_TestWork/blob/master/Images/PhoneNumbers.PNG)))
+
+![Streets]([[images/example.png](https://github.com/MichalSvetliy69/ForDBA_TestWork/blob/master/Images/Abonents.PNG](https://github.com/MichalSvetliy69/ForDBA_TestWork/blob/master/Images/Streets.PNG)))
 
 
