@@ -48,6 +48,6 @@ ADD CONSTRAINT FK_Address_Street FOREIGN KEY (StreetId) REFERENCES Streets(Id);
 
 ![PhoneNumbers](https://github.com/MichalSvetliy69/ForDBA_TestWork/blob/master/Images/PhoneNumbers.PNG)
 
-![Streets]([[images/example.png](https://github.com/MichalSvetliy69/ForDBA_TestWork/blob/master/Images/Abonents.PNG](https://github.com/MichalSvetliy69/ForDBA_TestWork/blob/master/Images/Streets.PNG)))
+![Streets](https://github.com/MichalSvetliy69/ForDBA_TestWork/blob/master/Images/Streets.PNG)
 
 
