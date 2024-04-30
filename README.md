@@ -1,7 +1,7 @@
 This application was created for a test task for a vacancy in a DBA company.
 A prepared MySQL remote database located on Reg.ru hosting is used.
 Data Base structure;
-
+```sql
 CREATE TABLE IF NOT EXISTS PhoneNumber (
     Id INT AUTO_INCREMENT PRIMARY KEY,
     Number VARCHAR(255),
@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS Address (
     HomeNumber VARCHAR(255),
     StreetId INT
 );
-
+```
 
 ALTER TABLE Address
 ADD CONSTRAINT FK_Address_Street FOREIGN KEY (StreetId) REFERENCES Streets(Id);
