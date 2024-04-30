@@ -96,7 +96,10 @@ namespace ForDBA.ViewModels
                                System.Windows.Forms.SaveFileDialog saveFileDialog = new System.Windows.Forms.SaveFileDialog();
                                saveFileDialog.Filter = "CSV files (*.csv)|*.csv|All files (*.*)|*.*"; // Фильтр для отображаемых типов файлов
                                saveFileDialog.FilterIndex = 1; // Номер фильтра по умолчанию
-                               saveFileDialog.FileName = "data.csv"; // Имя файла по умолчанию
+                               DateTime now = DateTime.Now;
+                               // Форматирование даты и времени в нужный формат
+                               string formattedDateTime = now.ToString("dd.MM.yy_HH-mm-ss");
+                               saveFileDialog.FileName = $"report_{formattedDateTime}.csv"; // Имя файла по умолчанию
 
                                Nullable<bool> result = saveFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK; // Получение результата открытия диалогового окна
 
@@ -104,19 +107,11 @@ namespace ForDBA.ViewModels
                                {
                                    string filePath = saveFileDialog.FileName; // Получение пути выбранного файла для сохранения
 
-                                   // Пример данных для сохранения в CSV файле
-                                   List<string> data = new List<string>
-                {
-                    "Name, Age, City",
-                    "John, 30, New York",
-                    "Alice, 25, Los Angeles",
-                    "Bob, 35, Chicago"
-                };
+ 
 
                                    CsvExporter.ExportToCsv(Abonents, filePath);
 
-                                   // Сохранение данных в файл CSV
-                                   //File.WriteAllLines(filePath, data);
+
 
                                    MessageBox.Show("Файл успешно сохранен.");
                                }
