@@ -33,12 +33,12 @@
 
         <DataGrid x:Name="DGrid" IsReadOnly="True" ItemsSource="{Binding MainDataGridItems, UpdateSourceTrigger=PropertyChanged}"  Grid.Row="1" Grid.Column="1" Grid.RowSpan="2" AutoGenerateColumns="False" SelectionChanged="DGrid_SelectionChanged" Margin="0,24,28,0">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="FIO" Binding="{Binding FIO}" Width="150"/>
-                <DataGridTextColumn Header="Street" Binding="{Binding StreetName}" Width="150"/>
-                <DataGridTextColumn Header="Address" Binding="{Binding HomeNumber}" Width="150"/>
-                <DataGridTextColumn Header="PhoneNumber" Binding="{Binding HomePhoneNumber}" Width="150"/>
-                <DataGridTextColumn Header="PhoneNumber" Binding="{Binding WorkPhoneNumber}" Width="150"/>
-                <DataGridTextColumn Header="PhoneNumber" Binding="{Binding MobilePhoneNumber}" Width="150"/>
+                <DataGridTextColumn Header="ФИО" Binding="{Binding FIO}" Width="150"/>
+                <DataGridTextColumn Header="Улица" Binding="{Binding StreetName}" Width="150"/>
+                <DataGridTextColumn Header="Адрес" Binding="{Binding HomeNumber}" Width="150"/>
+                <DataGridTextColumn Header="Домашний номер" Binding="{Binding HomePhoneNumber}" Width="150"/>
+                <DataGridTextColumn Header="Рабочий номер" Binding="{Binding WorkPhoneNumber}" Width="150"/>
+                <DataGridTextColumn Header="Мобильный номер" Binding="{Binding MobilePhoneNumber}" Width="150"/>
 
             </DataGrid.Columns>
         </DataGrid>
