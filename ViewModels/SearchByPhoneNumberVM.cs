@@ -21,7 +21,7 @@ namespace ForDBA.ViewModels
             //Abonents = userRepository.GetAbonents();
             MainDataGridMapper mainDataGridMapper = new MainDataGridMapper();
 
-            MainDataGridItems = userRepository.GetMainDataGrids();
+            MainDataGridItems = ViewModelsContainer.mainWindowVM.MainDataGridItems;
             //MainDataGridItems = mainDataGridMapper.GetMappingResult(Abonents);
 
         }
@@ -52,7 +52,7 @@ namespace ForDBA.ViewModels
             set 
             {
                 _phoneNumber = value;
-                //ViewModelsContainer.mainWindowVM.Abonents
+
 
                 
                 var filteredAbonents = MainDataGridItems.Where(abonent => abonent.MobilePhoneNumber.Contains(_phoneNumber) || abonent.HomePhoneNumber.Contains(_phoneNumber) || abonent.WorkPhoneNumber.Contains(_phoneNumber)).ToList();
@@ -64,7 +64,7 @@ namespace ForDBA.ViewModels
                 {
                     Visibility = "Collapsed";
                 }
-                ViewModelsContainer.mainWindowVM.MainDataGridItems = MainDataGridItems;
+                ViewModelsContainer.mainWindowVM.MainDataGridItems = filteredAbonents;
             }
         }
 

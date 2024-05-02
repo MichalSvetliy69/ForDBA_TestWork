@@ -45,7 +45,7 @@
 
         <Button x:Name ="AddComductorButton" Command="{Binding OpenSearchByPhoneNumberWindowCommand}" Grid.Row="3" Grid.Column="1" Content="Поиск" HorizontalAlignment="Left"  VerticalAlignment="Center" Height="50" Width="116"/>
         <Button Grid.Row="3" Grid.Column="1" Content="Улицы" Margin="152,0,0,0" Command="{Binding OpenStreetsInfoListWindowCommand}"   HorizontalAlignment="Left"  VerticalAlignment="Center" Height="50" Width="116">
-            
+
         </Button>
 
         <Button Grid.Row="3" Grid.Column="1" Margin="304,0,0,0"  HorizontalAlignment="Left"  VerticalAlignment="Center" Height="50" Width="116" Command="{Binding OpenFileDialogCommand}">
@@ -54,7 +54,17 @@
 
 
         <TextBlock Name="MiniList" Grid.Row="3" Grid.ColumnSpan="2" Margin="28,73,1224,5"/>
-        
+        <Button Grid.Column="1" Command="{Binding LastNameSorterCommand}" HorizontalAlignment="Left" Margin="0,6,0,0" Grid.Row="1" Width="20">
+            <Button.Content>
+                <Image Source="/Images/Filter.png" Width="16" Height="16" />
+            </Button.Content>
+        </Button>
+        <Button Grid.Column="1" HorizontalAlignment="Left" Margin="157,6,0,0" Grid.Row="1" VerticalAlignment="Top" Width="20">
+            <Button.Content>
+                <Image Source="/Images/Filter.png" Width="16" Height="16" />
+            </Button.Content>
+        </Button>
+
 
 
 

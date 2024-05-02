@@ -19,7 +19,9 @@ using ForDBA.Services;
 
 namespace ForDBA.ViewModels
 {
-
+    /// <summary>
+    /// Model for Main DataGrid output
+    /// </summary>
     class MainDataGrid
     {
         public string? FIO { get; set; }
@@ -31,24 +33,23 @@ namespace ForDBA.ViewModels
     }
 
 
-
+    /// <summary>
+    /// View Model gof Main window
+    /// </summary>
     class MainWindowVM : INotifyPropertyChanged
     {
-        List<Abonent> _abonents;
-        List<MainDataGrid> _mainDataGridItems;
+       
         public MainWindowVM ()
         {
             IRepository userRepository = new Repository();
-            //Abonents = userRepository.GetAbonents();
             MainDataGridMapper mainDataGridMapper = new MainDataGridMapper();
-
             MainDataGridItems = userRepository.GetMainDataGrids();
-            //MainDataGridItems = mainDataGridMapper.GetMappingResult(Abonents);
-  
 
         }
 
 
+        List<Abonent> _abonents;
+        List<MainDataGrid> _mainDataGridItems;
         public List<Abonent> Abonents 
         {
             get { return _abonents; }
@@ -59,7 +60,6 @@ namespace ForDBA.ViewModels
                 OnPropertyChanged("Abonents");
             }
         }
-
         public List<MainDataGrid> MainDataGridItems
         {
             get { return _mainDataGridItems; }
@@ -70,6 +70,8 @@ namespace ForDBA.ViewModels
                 OnPropertyChanged("MainDataGridItems");
             }
         }
+
+
 
         private RelayCommand _openSearchByPhoneNumberWindow;
         public RelayCommand OpenSearchByPhoneNumberWindowCommand
@@ -103,8 +105,7 @@ namespace ForDBA.ViewModels
             }
         }
 
-        private RelayCommand _openFileDialog;
-        //Nullable<bool> result = openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK;
+        private RelayCommand _openFileDialog; //Open file dialog for creation .SCV file
         public RelayCommand OpenFileDialogCommand
         {
             get
@@ -136,6 +137,22 @@ namespace ForDBA.ViewModels
                                    MessageBox.Show("Файл успешно сохранен.");
                                }
                            
+                       }));
+            }
+        }
+
+        private RelayCommand _lastNameSorter;
+        public RelayCommand LastNameSorterCommand
+        {
+            get
+            {
+                return _lastNameSorter ??
+                       (_lastNameSorter = new RelayCommand(obj =>
+                       {
+                           var items = MainDataGridItems;
+                           items.Sort((x, y) => x.FIO.CompareTo(y.FIO));
+                           ViewModelsContainer.mainWindowVM.MainDataGridItems = items;
+                           OnPropertyChanged("MainDataGridItems");
                        }));
             }
         }
